@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Tfscommerce\Customersync\Api\SyncCustomerManagementInterface" type="Tfscommerce\Customersync\Model\SyncCustomerManagement"/>
+	
+	<!-- Create our type LogGridDataProvider -->
+	<virtualType name="LogGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Tfscommerce\Customersync\Model\Resource\Tfscommercelogs\Collection</argument>
+			<argument name="filterPool" xsi:type="object" shared="false">LogGridFilterPool</argument>
+		</arguments>
+	</virtualType>
+	
+	<virtualType name="LogGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+		<arguments>
+			<argument name="appliers" xsi:type="array">
+				<item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+				<item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="customersync_log_listing_data_source" xsi:type="string">Tfscommerce\Customersync\Model\ResourceModel\Grid\Tfscommercelogs\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	
+	<virtualType name="Tfscommerce\Customersync\Model\ResourceModel\Grid\Tfscommercelogs\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">Tfscommerce_logs</argument>
+			<argument name="resourceModel" xsi:type="string">Tfscommerce\Customersync\Model\ResourceModel\Tfscommercelogs</argument>
+		</arguments>
+	</virtualType>
+</config>

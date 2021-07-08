@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+		<menu>
+			<add id="Tfscommerce_Customersync::core" title="Tfscommerce Logs" module="Tfscommerce_Customersync" sortOrder="90" resource="Tfscommerce_Customersync::sample"/>
+			<add id="Tfscommerce_Customersync::apilog" title="API Logs" module="Tfscommerce_Customersync" sortOrder="10" parent="Tfscommerce_Customersync::core" action="customersync/log/index" resource="Tfscommerce_Customersync::apilog"/>
+		</menu>
+</config>
