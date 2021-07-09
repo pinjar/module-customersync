@@ -2,7 +2,7 @@
     "name": "pinjar/module-customersync",
     "description": "Sync all magento customers with third party Api",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "GPL-3.0",
     "authors": [
         {
